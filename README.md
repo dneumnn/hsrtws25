@@ -125,6 +125,18 @@ Complexity is addressed, not hidden.
 
 If a concept is complex in the business, it SHOULD be complex in the model.
 
+### Specification
+
+```command
+/speckit.specify Create a web shop for designer furniture. The shop uses a product catalogue, a search function, a shopping basket and a checkout. The product catalogue can contain both products from the warehouse and products that are still in transit from production to the warehouse. The web shop must always show the customer the quantity currently available to order and indicate when a delivery will arrive. 
+```
+
+### Plan
+
+```command
+/speckit.plan The application uses FastAPI for Microservices for backend following the major DDD patterns. Use Alchemy as ORM. All data are stored in local SQLite. Use vanilla HTML, CSS, and JavaScript as much as possible for frontend.
+```
+
 ### Python
 
 ```bash
