@@ -8,8 +8,14 @@
         "baseURL": "http://localhost:11434/v1"
       },
       "models": {
-        "qwen3:8b": {
-          "name": "qwen3:8b"
+        "mdq100/Qwen3-Coder-30B-A3B-Instruct:30b": {
+          "name": "Qwen3-Coder-30B-A3B"
+        },
+        "devstral-2:123b-cloud": {
+          "name": "devstral-2:123b-cloud"
+        },
+        "gemini-3-pro-preview:latest": {
+          "name": "gemini-3-pro-preview:latest"
         }
       }
     }
