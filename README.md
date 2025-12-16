@@ -137,6 +137,27 @@ If a concept is complex in the business, it SHOULD be complex in the model.
 /speckit.plan The application uses FastAPI for Microservices for backend following the major DDD patterns. Use Alchemy as ORM. All data are stored in local SQLite. Use vanilla HTML, CSS, and JavaScript as much as possible for frontend.
 ```
 
+### Tasks
+
+```command
+/speckit.tasks
+```
+
+Correct to tasks:
+
+In DDD the project structure is usually dominated by bounded context or services. E.g.: 
+src/
+  your_service/
+    domain/
+    application/
+    infrastructure/
+    presentation/
+  shared_kernel/
+tests/
+Please refactor the tasks along this.
+
+### Implement
+
 ### Python
 
 ```bash
