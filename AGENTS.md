@@ -10,6 +10,34 @@ Auto-generated from all feature plans. Last updated: 2025-12-16
 
 ```text
 src/
+  catalog_service/
+    domain/
+    application/
+    infrastructure/
+    presentation/
+  basket_service/
+    domain/
+    application/
+    infrastructure/
+    presentation/
+  order_service/
+    domain/
+    application/
+    infrastructure/
+    presentation/
+  inventory_service/
+    domain/
+    application/
+    infrastructure/
+    presentation/
+  shared_kernel/
+    domain/
+    application/
+    infrastructure/
+  presentation/
+    web/
+    api/
+    cli/
 tests/
 ```
 

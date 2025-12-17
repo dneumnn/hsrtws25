@@ -51,7 +51,7 @@ Domain First: The **domain model** is the primary source of truth.
 ### Technology Requirements
 
 - Python 3.12+ backend with FastAPI
-- React 18+ frontend with TypeScript
+- Use vanilla HTML, CSS, and TypeScript
 - PostgreSQL database with proper indexing
 - Redis for caching and session management
 - Docker containers for development and deployment

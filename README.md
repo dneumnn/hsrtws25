@@ -134,7 +134,7 @@ If a concept is complex in the business, it SHOULD be complex in the model.
 ### Plan
 
 ```command
-/speckit.plan The application uses FastAPI for Microservices for backend following the major DDD patterns. Use Alchemy as ORM. All data are stored in local SQLite. Use vanilla HTML, CSS, and JavaScript as much as possible for frontend.
+/speckit.plan The application uses FastAPI for Microservices for backend following the major DDD patterns. Use Alchemy as ORM. All data are stored in local SQLite. Use vanilla HTML, CSS, and TypeScript as much as possible for frontend.
 ```
 
 ### Tasks
