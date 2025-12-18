@@ -3,9 +3,8 @@
 
 from typing import Dict, Any, Optional
 import logging
-from fastapi import HTTPException, Request
+from fastapi import Request
 from fastapi.responses import JSONResponse
-from typing import Dict, Any
 import sys
 
 # Configure logging

@@ -1,8 +1,8 @@
 # Domain Event Bus and Message Handling
 # Event-driven architecture for cross-service communication
 
-from typing import Dict, Any, List, Optional
-from uuid import UUID, uuid4
+from typing import Dict, Any, List
+from uuid import uuid4
 from datetime import datetime
 
 

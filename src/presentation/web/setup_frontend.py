@@ -2,7 +2,6 @@
 # Basic frontend structure for the furniture web shop
 
 import os
-from pathlib import Path
 
 
 def create_frontend_structure():
@@ -52,16 +51,16 @@ def create_frontend_structure():
             <a href="/basket.html">Basket</a>
         </nav>
     </header>
-    
+
     <main>
         <h2>{page.replace(".html", "").title()} Page</h2>
         <p>Content for {page.replace(".html", "").title()} page will be added here.</p>
     </main>
-    
+
     <footer>
         <p>&copy; 2025 Designer Furniture Web Shop. All rights reserved.</p>
     </footer>
-    
+
     <script src="/ts/main.js" type="module"></script>
 </body>
 </html>""")

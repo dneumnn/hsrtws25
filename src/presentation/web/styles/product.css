@@ -1,0 +1,253 @@
+/* Product Detail Styles */
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+nav {
+    margin-top: 1rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.product-detail {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+}
+
+.product-images {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.main-image {
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+}
+
+.thumbnail-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.thumbnail:hover {
+    border-color: #3498db;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.product-info h2 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.8rem;
+}
+
+.price {
+    font-weight: bold;
+    color: #e74c3c;
+    font-size: 2rem;
+}
+
+.category-style {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.category,
+.style {
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.category {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.style {
+    background-color: #f3e5f5;
+    color: #7b1fa2;
+}
+
+.description {
+    margin: 1rem 0;
+    line-height: 1.8;
+}
+
+.specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.specs-table th,
+.specs-table td {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.specs-table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+.specs-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.inventory-status {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+.inventory-status.in-stock {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.inventory-status.pre-order {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.inventory-status.out-of-stock {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.delivery-estimate {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin: 1rem 0;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.add-to-basket,
+.back-to-catalog {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.add-to-basket {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.add-to-basket:hover {
+    background-color: #27ae60;
+}
+
+.back-to-catalog {
+    background-color: #3498db;
+    color: white;
+}
+
+.back-to-catalog:hover {
+    background-color: #2980b9;
+}
+
+@media (max-width: 768px) {
+    .product-detail {
+        grid-template-columns: 1fr;
+    }
+
+    .thumbnail-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .add-to-basket,
+    .back-to-catalog {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .thumbnail-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

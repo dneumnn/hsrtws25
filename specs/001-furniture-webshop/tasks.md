@@ -97,27 +97,27 @@ src/
 
 ### Implementation for User Story 1 (Catalog Service)
 
-- [ ] T025 [P] [DDD] [US1] Create Product domain model in src/catalog_service/domain/product.py
-- [ ] T026 [P] [DDD] [US1] Create Inventory domain model in src/inventory_service/domain/inventory.py
-- [ ] T027 [P] [DDD] [US1] Create DeliveryEstimate domain model in src/inventory_service/domain/delivery_estimate.py
-- [ ] T028 [DDD] [US1] Implement Product repository in src/catalog_service/infrastructure/product_repository.py
-- [ ] T029 [DDD] [US1] Implement Inventory repository in src/inventory_service/infrastructure/inventory_repository.py
-- [ ] T030 [DDD] [US1] Implement Product application service in src/catalog_service/application/product_service.py
-- [ ] T031 [DDD] [US1] Implement Inventory application service in src/inventory_service/application/inventory_service.py
-- [ ] T032 [DDD] [US1] Implement DeliveryEstimate application service in src/inventory_service/application/delivery_estimate_service.py
-- [ ] T033 [DDD] [US1] Implement GET /products endpoint in src/catalog_service/presentation/api/products.py
-- [ ] T034 [DDD] [US1] Implement GET /products/{product_id} endpoint in src/catalog_service/presentation/api/products.py
-- [ ] T035 [DDD] [US1] Implement GET /inventory/{product_id} endpoint in src/inventory_service/presentation/api/inventory.py
-- [ ] T036 [P] [US1] Create product catalog page in src/presentation/web/pages/catalog.html
-- [ ] T037 [P] [US1] Create product detail page in src/presentation/web/pages/product.html
-- [ ] T038 [DDD] [US1] Implement product search functionality in src/presentation/web/ts/search.ts
-- [ ] T039 [DDD] [US1] Implement product catalog display with inventory status in src/presentation/web/ts/catalog.ts
-- [ ] T040 [DDD] [US1] Implement real-time availability display in src/presentation/web/ts/inventory.ts
-- [ ] T041 [DDD] [US1] Add validation and error handling for product endpoints
-- [ ] T042 [DDD] [US1] Add logging for product catalog operations
-- [ ] T043 [P] [US1] Create CSS styles for product catalog in src/presentation/web/styles/catalog.css
-- [ ] T044 [P] [US1] Create CSS styles for product details in src/presentation/web/styles/product.css
-- [ ] T045 [DDD] [US1] Implement domain events for product inventory changes
+- [x] T025 [P] [DDD] [US1] Create Product domain model in src/catalog_service/domain/product.py
+- [x] T026 [P] [DDD] [US1] Create Inventory domain model in src/inventory_service/domain/inventory.py
+- [x] T027 [P] [DDD] [US1] Create DeliveryEstimate domain model in src/inventory_service/domain/delivery_estimate.py
+- [x] T028 [DDD] [US1] Implement Product repository in src/catalog_service/infrastructure/product_repository.py
+- [x] T029 [DDD] [US1] Implement Inventory repository in src/inventory_service/infrastructure/inventory_repository.py
+- [x] T030 [DDD] [US1] Implement Product application service in src/catalog_service/application/product_service.py
+- [x] T031 [DDD] [US1] Implement Inventory application service in src/inventory_service/application/inventory_service.py
+- [x] T032 [DDD] [US1] Implement DeliveryEstimate application service in src/inventory_service/application/delivery_estimate_service.py
+- [x] T033 [DDD] [US1] Implement GET /products endpoint in src/catalog_service/presentation/api/products.py
+- [x] T034 [DDD] [US1] Implement GET /products/{product_id} endpoint in src/catalog_service/presentation/api/products.py
+- [x] T035 [DDD] [US1] Implement GET /inventory/{product_id} endpoint in src/inventory_service/presentation/api/inventory.py
+- [x] T036 [P] [US1] Create product catalog page in src/presentation/web/pages/catalog.html
+- [x] T037 [P] [US1] Create product detail page in src/presentation/web/pages/product.html
+- [x] T038 [DDD] [US1] Implement product search functionality in src/presentation/web/ts/search.ts
+- [x] T039 [DDD] [US1] Implement product catalog display with inventory status in src/presentation/web/ts/catalog.ts
+- [x] T040 [DDD] [US1] Implement real-time availability display in src/presentation/web/ts/inventory.ts
+- [x] T041 [DDD] [US1] Add validation and error handling for product endpoints
+- [x] T042 [DDD] [US1] Add logging for product catalog operations
+- [x] T043 [P] [US1] Create CSS styles for product catalog in src/presentation/web/styles/catalog.css
+- [x] T044 [P] [US1] Create CSS styles for product details in src/presentation/web/styles/product.css
+- [x] T045 [DDD] [US1] Implement domain events for product inventory changes
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 

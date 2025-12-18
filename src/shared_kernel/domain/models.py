@@ -2,11 +2,9 @@
 # Core domain entities and value objects
 
 from datetime import datetime
-from typing import Optional, List
+from typing import List
 from uuid import UUID, uuid4
 from pydantic import BaseModel, Field
-from sqlalchemy import Column, String, Text, Float, Boolean, DateTime, Integer, JSON
-from sqlalchemy.dialects.postgresql import UUID as SQLUUID
 from sqlalchemy.ext.declarative import declarative_base
 
 # Base class for SQLAlchemy models

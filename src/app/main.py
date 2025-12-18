@@ -5,6 +5,17 @@ from typing import Dict, Any
 # Import shared kernel infrastructure
 from shared_kernel.infrastructure.database import init_db
 
+# Domain event bus for cross-context communication
+domain_event_bus = []
+
+
+def register_router(context_name: str, router: APIRouter):
+    """
+    Register a bounded context router
+    """
+    app.include_router(router, prefix=f"/api/v1/{context_name}")
+
+
 # Create main FastAPI application
 app = FastAPI(
     title="Designer Furniture Web Shop API",
@@ -23,19 +34,22 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Router registry for bounded contexts
-routers: Dict[str, APIRouter] = {}
+# Import and register bounded context routers
+try:
+    from catalog_service.presentation.api.products import router as products_router
 
-# Domain event bus for cross-context communication
-domain_event_bus = []
+    register_router("catalog", products_router)
+    print("✅ Catalog service router registered")
+except ImportError as e:
+    print(f"⚠️  Could not import catalog service router: {e}")
 
+try:
+    from inventory_service.presentation.api.inventory import router as inventory_router
 
-def register_router(context_name: str, router: APIRouter):
-    """
-    Register a bounded context router
-    """
-    routers[context_name] = router
-    app.include_router(router, prefix=f"/api/v1/{context_name}")
+    register_router("inventory", inventory_router)
+    print("✅ Inventory service router registered")
+except ImportError as e:
+    print(f"⚠️  Could not import inventory service router: {e}")
 
 
 def publish_domain_event(event_name: str, event_data: Dict[str, Any]):

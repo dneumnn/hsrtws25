@@ -8,8 +8,10 @@ Using Ollama with devstral-2:123b-cloud
 
 ## Installation
 
+<https://opencode.ai>
+
 ```bash
-brew install opencode #https://opencode.ai
+brew install opencode 
 uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 ```
 
@@ -158,15 +160,14 @@ src/
 tests/
 Please refactor the tasks along this.
 
-### Implement
+## Implement
 
-#### Phase 1
+### Phase 1
 
 ```command
 /speckit.implement Phase 1
 ```
-
-#### Python
+### Python
 
 ```bash
 conda create --name hsrtw25 python=3.12
@@ -174,7 +175,7 @@ conda activate hsrtw25
 pip install -r requirements.txt
 ```
 
-#### Phase 2
+### Phase 2
 
 ```command
 /speckit.implement Phase 2
@@ -184,8 +185,19 @@ The foundation is now complete! We can now proceed to Phase 3: User Story 1 - Br
 
 The application successfully starts up and initializes the database, confirming that the core infrastructure is working. All linting issues have been addressed, and the code follows Python 3.12+ best practices.
 
-#### Phase 4
+### Phase 3
 
 ```command
 /speckit.implement Phase 3: User Story 1 - Browse and Search Furniture Products
 ```
+
+Next Steps: The implementation is now ready for testing. The user story provides a complete, functional product catalog system that enables customers to:
+
+- Browse furniture products by category
+- Search products by name or description
+- View detailed product information with images and specifications
+- Check real-time inventory availability
+- See accurate delivery estimates
+- Navigate through a responsive, user-friendly interface
+
+User Story 1 is now complete and ready for integration testing!

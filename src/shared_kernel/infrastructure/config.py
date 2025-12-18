@@ -1,8 +1,7 @@
 # Environment Configuration Management for DDD
 # Centralized configuration service
 
-import os
-from typing import Dict, Any, Optional
+from typing import Dict, Any
 from pydantic import BaseSettings
 
 

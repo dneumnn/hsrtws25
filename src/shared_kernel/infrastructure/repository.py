@@ -4,7 +4,6 @@
 from typing import Dict, Any, List, Optional, Type
 from uuid import UUID
 from sqlalchemy.orm import Session
-from pydantic import BaseModel
 
 
 # Base repository interface

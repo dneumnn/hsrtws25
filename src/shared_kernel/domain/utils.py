@@ -1,8 +1,8 @@
 # Shared Utility Functions and Constants for DDD
 # Common utilities used across bounded contexts
 
-from typing import Dict, Any, Optional, List
-from datetime import datetime, timedelta
+from typing import Dict, Any, List
+from datetime import datetime
 from uuid import UUID, uuid4
 
 
