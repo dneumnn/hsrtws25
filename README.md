@@ -1,54 +1,82 @@
-# DDD with code agent
+# Designer Furniture Web Shop
 
-- opencode v1.0.153
-- spec-kit v0.0.22
-- python 3.12
+This project implements a designer furniture web shop using Domain-Driven Design (DDD) principles with FastAPI, SQLAlchemy, and SQLite.
 
-## Installation
+## Project Structure
+
+The project follows a DDD structure with bounded contexts:
+
+```text
+src/
+  catalog_service/
+    domain/
+    application/
+    infrastructure/
+    presentation/
+  basket_service/
+    domain/
+    application/
+    infrastructure/
+    presentation/
+  order_service/
+    domain/
+    application/
+    infrastructure/
+    presentation/
+  inventory_service/
+    domain/
+    application/
+    infrastructure/
+    presentation/
+  shared_kernel/
+    domain/
+    application/
+    infrastructure/
+  presentation/
+    web/
+    api/
+    cli/
+```
+
+## Setup
+
+1. Install Python 3.12+
+2. Create virtual environment: `python -m venv venv`
+3. Activate: `source venv/bin/activate` (or `venv\Scripts\activate` on Windows)
+4. Install dependencies: `pip install -r requirements.txt`
+
+## Running the Application
 
 ```bash
-brew install opencode #https://opencode.ai
-uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+# Start FastAPI server
+uvicorn app.main:app --reload
 ```
 
-## Initialize Project
+The application will be available at `http://localhost:8000`
+API documentation: `http://localhost:8000/docs`
 
-### 1. spec-kit
+## Features
+
+- Product catalog with search and filtering
+- Real-time inventory management
+- Shopping basket functionality
+- Checkout process with payment integration
+- Delivery estimate calculation
+
+## Testing
 
 ```bash
-specify init .
+# Run tests
+pytest tests/
 ```
 
-- link with opencode
+## Development
 
-![Agent Folder Security](./media/agent-folder-security.png)
+Follow the DDD patterns and maintain separation of concerns between bounded contexts.
 
-spec-kit has created 2 folders:
+## DDD Constitution
 
-- .specify
-- .opencode
-
-You will find new opencode commands inside .opencode folder: ls -la .opencode/command
-
-### 2. opencode
-
-run opencode
-
-```bash
-opencode
-```
-
-### Constitution.md
-
-```command
-/speckit.constitution We build a web shop selling furniture with python and react. We consistently follow domain driven design patterns.
-```
-
-Manuel corrections:
-
-#### DDD Constitution
-
-#### 1. Domain First
+### 1. Domain First
 
 The **domain model** is the primary source of truth.
 
@@ -56,7 +84,7 @@ The **domain model** is the primary source of truth.
 - The system MUST reflect how domain experts think and speak.
 - Technical abstractions MUST NOT distort or replace domain concepts.
 
-#### 2. Ubiquitous Language
+### 2. Ubiquitous Language
 
 A single, shared language MUST be used consistently across:
 
@@ -66,15 +94,7 @@ A single, shared language MUST be used consistently across:
 - Documentation
 - Conversations
 
-Rules:
-
-- Domain terms MUST be explicitly defined.
-- Synonyms MUST NOT be introduced casually.
-- If a term is ambiguous, it MUST be clarified or renamed.
-
-The ubiquitous language evolves intentionally and versionedly.
-
-#### 3. Explicit Boundaries
+### 3. Explicit Boundaries
 
 The system is composed of **Bounded Contexts**.
 
@@ -85,9 +105,7 @@ The system is composed of **Bounded Contexts**.
 - Models MUST NOT leak across boundaries.
 - Integration between contexts MUST be explicit and documented.
 
-Coupling across bounded contexts is a design decision, not an accident.
-
-#### 4. Model Integrity
+### 4. Model Integrity
 
 Each domain model MUST protect its own invariants.
 
@@ -95,19 +113,11 @@ Each domain model MUST protect its own invariants.
 - Invalid states MUST be unrepresentable where possible.
 - Business rules MUST NOT be scattered across layers.
 
-Entities, Value Objects, Aggregates, and Domain Services MUST be used intentionally.
-
-#### 5. Aggregates as Consistency Boundaries
+### 5. Aggregates as Consistency Boundaries
 
 Aggregates define transactional and consistency boundaries.
 
-Rules:
-
-- An Aggregate Root is the only entry point to its aggregate.
-- Cross-aggregate consistency MUST be eventual unless explicitly justified.
-- Aggregates SHOULD be small and behavior-rich.
-
-#### 6. Behavior Over Data
+### 6. Behavior Over Data
 
 Domain objects represent **behavior**, not just structure.
 
@@ -115,52 +125,23 @@ Domain objects represent **behavior**, not just structure.
 - Anemic domain models are considered a design failure.
 - Business decisions belong in the domain, not orchestration layers.
 
-#### 8. Intentional Complexity
+## Implementation Status
 
-Complexity is addressed, not hidden.
+### Phase 1: Setup (Shared Infrastructure)
 
-- Accidental complexity MUST be minimized.
-- Essential complexity MUST be modeled explicitly.
-- Trade-offs MUST be documented when made.
+- [x] T001 Create DDD project structure with bounded contexts and shared kernel
+- [ ] T002 Initialize Python 3.12+ project with FastAPI, SQLAlchemy, SQLite dependencies
+- [ ] T003 [P] Configure linting and formatting tools (ruff, black)
+- [ ] T004 [P] Setup pytest for testing
+- [ ] T005 Create basic project documentation structure
+- [ ] T006 Initialize git repository with proper .gitignore
+- [ ] T007 Setup virtual environment and dependency management
+- [ ] T008 [DDD] Create shared kernel structure in src/shared_kernel/
+- [ ] T009 [DDD] Define domain events and shared interfaces
 
-If a concept is complex in the business, it SHOULD be complex in the model.
+### Next Steps
 
-### Specification
-
-```command
-/speckit.specify Create a web shop for designer furniture. The shop uses a product catalogue, a search function, a shopping basket and a checkout. The product catalogue can contain both products from the warehouse and products that are still in transit from production to the warehouse. The web shop must always show the customer the quantity currently available to order and indicate when a delivery will arrive. 
-```
-
-### Plan
-
-```command
-/speckit.plan The application uses FastAPI for Microservices for backend following the major DDD patterns. Use Alchemy as ORM. All data are stored in local SQLite. Use vanilla HTML, CSS, and TypeScript as much as possible for frontend.
-```
-
-### Tasks
-
-```command
-/speckit.tasks
-```
-
-Correct to tasks:
-
-In DDD the project structure is usually dominated by bounded context or services. E.g.: 
-src/
-  your_service/
-    domain/
-    application/
-    infrastructure/
-    presentation/
-  shared_kernel/
-tests/
-Please refactor the tasks along this.
-
-### Implement
-
-### Python
-
-```bash
-conda create --name hsrtw25 python=3.12
-conda activate hsrtw25
-```
+1. Initialize Python project with dependencies
+2. Configure development tools
+3. Set up testing framework
+4. Create shared kernel structure

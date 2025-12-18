@@ -51,15 +51,15 @@ src/
 
 **Purpose**: Project initialization with DDD structure
 
-- [ ] T001 Create DDD project structure with bounded contexts and shared kernel
-- [ ] T002 Initialize Python 3.12+ project with FastAPI, SQLAlchemy, SQLite dependencies
-- [ ] T003 [P] Configure linting and formatting tools (ruff, black)
-- [ ] T004 [P] Setup pytest for testing
-- [ ] T005 Create basic project documentation structure
-- [ ] T006 Initialize git repository with proper .gitignore
-- [ ] T007 Setup virtual environment and dependency management
-- [ ] T008 [DDD] Create shared kernel structure in src/shared_kernel/
-- [ ] T009 [DDD] Define domain events and shared interfaces
+- [x] T001 Create DDD project structure with bounded contexts and shared kernel
+- [x] T002 Initialize Python 3.12+ project with FastAPI, SQLAlchemy, SQLite dependencies
+- [x] T003 [P] Configure linting and formatting tools (ruff, black)
+- [x] T004 [P] Setup pytest for testing
+- [x] T005 Create basic project documentation structure
+- [x] T006 Initialize git repository with proper .gitignore
+- [x] T007 Setup virtual environment and dependency management
+- [x] T008 [DDD] Create shared kernel structure in src/shared_kernel/
+- [x] T009 [DDD] Define domain events and shared interfaces
 
 ---
 

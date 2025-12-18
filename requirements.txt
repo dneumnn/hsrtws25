@@ -1,0 +1,14 @@
+fastapi
+sqlalchemy
+uvicorn
+pytest
+ruff
+black
+python-dotenv
+alembic
+pydantic
+python-multipart
+passlib
+bcrypt
+python-jose
+cryptography
