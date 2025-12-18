@@ -3,7 +3,7 @@
 **Input**: Design documents from `/specs/001-furniture-webshop/`
 **Prerequisites**: plan.md, spec.md, research.md, data-model.md, contracts/
 
-**Tests**: Optional - not explicitly requested in feature specification  
+**Tests**: Explicitly requested in feature specification  
 **Organization**: Tasks are grouped by user story and follow DDD structure with bounded contexts
 
 ## Format: `[ID] [P?] [Story] Description`
@@ -110,9 +110,9 @@ src/
 - [ ] T035 [DDD] [US1] Implement GET /inventory/{product_id} endpoint in src/inventory_service/presentation/api/inventory.py
 - [ ] T036 [P] [US1] Create product catalog page in src/presentation/web/pages/catalog.html
 - [ ] T037 [P] [US1] Create product detail page in src/presentation/web/pages/product.html
-- [ ] T038 [DDD] [US1] Implement product search functionality in src/presentation/web/js/search.js
-- [ ] T039 [DDD] [US1] Implement product catalog display with inventory status in src/presentation/web/js/catalog.js
-- [ ] T040 [DDD] [US1] Implement real-time availability display in src/presentation/web/js/inventory.js
+- [ ] T038 [DDD] [US1] Implement product search functionality in src/presentation/web/ts/search.ts
+- [ ] T039 [DDD] [US1] Implement product catalog display with inventory status in src/presentation/web/ts/catalog.ts
+- [ ] T040 [DDD] [US1] Implement real-time availability display in src/presentation/web/ts/inventory.ts
 - [ ] T041 [DDD] [US1] Add validation and error handling for product endpoints
 - [ ] T042 [DDD] [US1] Add logging for product catalog operations
 - [ ] T043 [P] [US1] Create CSS styles for product catalog in src/presentation/web/styles/catalog.css
@@ -141,7 +141,7 @@ src/
 - [ ] T053 [DDD] [US2] Implement PUT /basket/items/{item_id} endpoint in src/basket_service/presentation/api/basket.py
 - [ ] T054 [DDD] [US2] Implement DELETE /basket/items/{item_id} endpoint in src/basket_service/presentation/api/basket.py
 - [ ] T055 [P] [US2] Create shopping basket page in src/presentation/web/pages/basket.html
-- [ ] T056 [DDD] [US2] Implement basket functionality in src/presentation/web/js/basket.js
+- [ ] T056 [DDD] [US2] Implement basket functionality in src/presentation/web/ts/basket.ts
 - [ ] T057 [DDD] [US2] Implement add-to-basket buttons in product catalog and detail pages
 - [ ] T058 [DDD] [US2] Implement real-time inventory validation when adding to basket
 - [ ] T059 [DDD] [US2] Add validation and error handling for basket operations
@@ -175,8 +175,8 @@ src/
 - [ ] T074 [DDD] [US3] Implement GET /orders/{order_id} endpoint in src/order_service/presentation/api/orders.py
 - [ ] T075 [P] [US3] Create checkout page in src/presentation/web/pages/checkout.html
 - [ ] T076 [P] [US3] Create order confirmation page in src/presentation/web/pages/confirmation.html
-- [ ] T077 [DDD] [US3] Implement checkout process in src/presentation/web/js/checkout.js
-- [ ] T078 [DDD] [US3] Implement order history display in src/presentation/web/js/orders.js
+- [ ] T077 [DDD] [US3] Implement checkout process in src/presentation/web/ts/checkout.ts
+- [ ] T078 [DDD] [US3] Implement order history display in src/presentation/web/ts/orders.ts
 - [ ] T079 [DDD] [US3] Implement payment method selection and validation
 - [ ] T080 [DDD] [US3] Implement shipping address form with validation
 - [ ] T081 [DDD] [US3] Implement inventory reservation during checkout
@@ -201,9 +201,9 @@ src/
 
 - [ ] T088 [DDD] [US4] Enhance InventoryService with detailed status calculations in src/inventory_service/application/inventory_service.py
 - [ ] T089 [DDD] [US4] Enhance DeliveryEstimateService with dynamic calculation logic in src/inventory_service/application/delivery_estimate_service.py
-- [ ] T090 [DDD] [US4] Implement inventory status display updates in src/presentation/web/js/inventory.js
-- [ ] T091 [DDD] [US4] Implement delivery estimate display logic in src/presentation/web/js/delivery.js
-- [ ] T092 [DDD] [US4] Add low stock warnings and notifications in src/presentation/web/js/notification.js
+- [ ] T090 [DDD] [US4] Implement inventory status display updates in src/presentation/web/ts/inventory.ts
+- [ ] T091 [DDD] [US4] Implement delivery estimate display logic in src/presentation/web/ts/delivery.ts
+- [ ] T092 [DDD] [US4] Add low stock warnings and notifications in src/presentation/web/ts/notification.ts
 - [ ] T093 [DDD] [US4] Implement out-of-stock product handling and notification options
 - [ ] T094 [DDD] [US4] Implement pre-order functionality for in-transit products
 - [ ] T095 [DDD] [US4] Implement real-time updates for inventory changes

@@ -52,9 +52,7 @@ Domain First: The **domain model** is the primary source of truth.
 
 - Python 3.12+ backend with FastAPI
 - Use vanilla HTML, CSS, and TypeScript
-- PostgreSQL database with proper indexing
-- Redis for caching and session management
-- Docker containers for development and deployment
+- SQLite database with proper indexing
 
 ### Architecture Principles
 

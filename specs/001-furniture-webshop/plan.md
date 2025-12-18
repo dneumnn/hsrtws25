@@ -7,7 +7,7 @@
 
 ## Summary
 
-Create a web shop for designer furniture with product catalog, search function, shopping basket, and checkout. The system must track inventory from both warehouse stock and in-transit products, display real-time availability, and provide accurate delivery estimates. Built using FastAPI microservices with SQLAlchemy ORM and SQLite database, with vanilla HTML/CSS/JavaScript frontend.
+Create a web shop for designer furniture with product catalog, search function, shopping basket, and checkout. The system must track inventory from both warehouse stock and in-transit products, display real-time availability, and provide accurate delivery estimates. Built using FastAPI microservices with SQLAlchemy ORM and SQLite database, with HTML, CSS & TypeScript frontend.
 
 ## Technical Context
 
@@ -17,14 +17,14 @@ Create a web shop for designer furniture with product catalog, search function, 
   the iteration process.
 -->
 
-**Language/Version**: Python 3.12+   
-**Primary Dependencies**: FastAPI, SQLAlchemy, SQLite   
-**Storage**: SQLite (local database)   
-**Testing**: pytest, unittest   
-**Target Platform**: Web application (desktop, tablet, mobile responsive)   
-**Project Type**: Web application   
-**Performance Goals**: Support 500 concurrent users, <500ms API response times, handle 1000 daily orders   
-**Constraints**: Domain-Driven Design patterns, FastAPI best practices, vanilla HTML/CSS/JS frontend   
+**Language/Version**: Python 3.12+
+**Primary Dependencies**: FastAPI, SQLAlchemy, SQLite
+**Storage**: SQLite (local database)
+**Testing**: pytest, unittest
+**Target Platform**: Web application (desktop, tablet, mobile responsive)
+**Project Type**: Web application
+**Performance Goals**: Support 500 concurrent users, <500ms API response times, handle 1000 daily orders
+**Constraints**: Domain-Driven Design patterns, FastAPI best practices, HTML, CSS & TypeScript frontend
 **Scale/Scope**: 50k+ products, 10k+ users, real-time inventory management
 
 ## Constitution Check
@@ -35,7 +35,7 @@ Create a web shop for designer furniture with product catalog, search function, 
 - ✅ Test coverage ≥80% maintained  
 - ✅ CI/CD integration configured  
 - ✅ Type hints and documentation included  
-- ✅ Design system consistency maintained (RESOLVED: Using vanilla HTML/CSS/JS with modular organization)  
+- ✅ Design system consistency maintained (RESOLVED: Using HTML/CSS/TypeScript with modular organization)  
 - ✅ Accessibility compliance (WCAG 2.1 AA)  
 - ✅ Comprehensive testing strategy (unit, integration, e2e)  
 - ✅ Performance optimization implemented  
@@ -60,38 +60,38 @@ specs/[###-feature]/
 ```
 
 ### Source Code (repository root)
-<!--
-  ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
-  for this feature. Delete unused options and expand the chosen structure with
-  real paths (e.g., apps/admin, packages/something). The delivered plan must
-  not include Option labels.
--->
 
 ```text
-backend/
-├── src/
-│   ├── models/
-│   ├── services/
-│   ├── api/
-│   └── repositories/
-└── tests/
-
-frontend/
-├── public/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── services/
-│   └── styles/
-└── tests/
+src/
+  catalog_service/
+    domain/
+    application/
+    infrastructure/
+    presentation/
+  basket_service/
+    domain/
+    application/
+    infrastructure/
+    presentation/
+  order_service/
+    domain/
+    application/
+    infrastructure/
+    presentation/
+  inventory_service/
+    domain/
+    application/
+    infrastructure/
+    presentation/
+  shared_kernel/
+    domain/
+    application/
+    infrastructure/
+  presentation/
+    web/
+    api/
+    cli/
 ```
 
-**Structure Decision**: Web application structure with separate backend (FastAPI) and frontend (vanilla HTML/CSS/JS) directories. Backend follows DDD patterns with models, services, API endpoints, and repositories. Frontend uses component-based organization with separate pages, reusable components, and services for API communication.
 
-## Complexity Tracking
-
-> **Fill ONLY if Constitution Check has violations that must be justified**
-
-| Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| Vanilla HTML/CSS/JS instead of React | User requirement for simplicity and faster development. Project scope doesn't require complex state management. | React provides better component management but adds build complexity and learning curve. |
+**Structure Decision**: Web application structure with separate backend (FastAPI) and frontend (HTML, CSS & TypeScript) directories. Backend follows DDD patterns with models, services, API endpoints, and repositories. Frontend uses component-based organization with separate pages, reusable components, and services for API communication.

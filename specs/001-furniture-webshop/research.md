@@ -2,12 +2,12 @@
 
 ## Frontend Framework Decision
 
-**Decision**: Use vanilla HTML/CSS/JavaScript with progressive enhancement approach
+**Decision**: Use vanilla HTML/CSS/TypeScript with progressive enhancement approach
 
 **Rationale**: 
 - User explicitly requested vanilla HTML/CSS/JS for simplicity and faster development
 - The project scope (designer furniture web shop) doesn't require complex state management that React would provide
-- Vanilla JS can handle the required functionality (product catalog, search, shopping basket, checkout) effectively
+- Vanilla TypeScript can handle the required functionality (product catalog, search, shopping basket, checkout) effectively
 - Reduces build complexity and eliminates React dependency management
 - Better performance for simple e-commerce interfaces
 - Easier to maintain for small development teams
@@ -17,7 +17,7 @@
 - Vue.js: Lightweight alternative but still requires build setup
 - Svelte: Compiled approach but not as widely adopted
 
-**Conclusion**: Vanilla HTML/CSS/JS with modular JavaScript organization provides the best balance of simplicity and functionality for this project scope.
+**Conclusion**: Vanilla HTML/CSS/JS with modular TypeScript organization provides the best balance of simplicity and functionality for this project scope.
 
 ## Technical Stack Confirmation
 
@@ -26,9 +26,9 @@
 - SQLAlchemy offers robust ORM capabilities for complex inventory management
 - SQLite is suitable for local development and can be upgraded to PostgreSQL later
 
-**Frontend**: Vanilla HTML5, CSS3, JavaScript (ES6+)
+**Frontend**: Vanilla HTML5, CSS3, TypeScript (ES6+)
 - Progressive enhancement approach for cross-browser compatibility
-- Modular JavaScript organization using ES6 modules
+- Modular TypeScript organization using ES6 modules
 - Responsive design using CSS Grid and Flexbox
 
 **Performance Optimization**:
