@@ -1,50 +1,107 @@
-# Shared Kernel Domain Models
+# Base Domain Models and Repository Patterns for DDD
+# Core domain entities and value objects
 
 from datetime import datetime
+from typing import Optional, List
+from uuid import UUID, uuid4
+from pydantic import BaseModel, Field
+from sqlalchemy import Column, String, Text, Float, Boolean, DateTime, Integer, JSON
+from sqlalchemy.dialects.postgresql import UUID as SQLUUID
+from sqlalchemy.ext.declarative import declarative_base
 
-from pydantic import UUID4, BaseModel
+# Base class for SQLAlchemy models
+Base = declarative_base()
 
 
+# Domain Events
 class DomainEvent(BaseModel):
-    """Base class for all domain events"""
+    """Base domain event"""
 
-    event_id: UUID4
+    event_id: UUID = Field(default_factory=uuid4)
     event_type: str
-    timestamp: datetime
-    payload: dict
+    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    data: dict
 
 
-class IntegrationEvent(BaseModel):
-    """Base class for integration events between bounded contexts"""
+# Base Entity
+class BaseEntity:
+    """Base entity with common fields"""
 
-    event_id: UUID4
-    source_context: str
-    destination_context: str
-    timestamp: datetime
-    payload: dict
+    id: UUID = Field(default_factory=uuid4)
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    updated_at: datetime = Field(default_factory=datetime.utcnow)
+
+    def update_timestamp(self):
+        """Update entity timestamp"""
+        self.updated_at = datetime.utcnow()
 
 
+# Base Aggregate Root
+class AggregateRoot(BaseEntity):
+    """Base aggregate root for DDD"""
+
+    domain_events: List[DomainEvent] = []
+
+    def add_domain_event(self, event: DomainEvent):
+        """Add domain event"""
+        self.domain_events.append(event)
+
+    def clear_domain_events(self):
+        """Clear domain events"""
+        self.domain_events = []
+
+
+# Base Value Object
 class ValueObject(BaseModel):
-    """Base class for value objects"""
+    """Base value object"""
 
     pass
 
 
-class Entity(BaseModel):
-    """Base class for entities"""
+# Repository Interface
+class RepositoryInterface:
+    """Repository interface for DDD"""
 
-    id: UUID4
+    def get(self, id: UUID):
+        """Get entity by ID"""
+        raise NotImplementedError
+
+    def get_all(self):
+        """Get all entities"""
+        raise NotImplementedError
+
+    def add(self, entity):
+        """Add new entity"""
+        raise NotImplementedError
+
+    def update(self, entity):
+        """Update existing entity"""
+        raise NotImplementedError
+
+    def delete(self, id: UUID):
+        """Delete entity"""
+        raise NotImplementedError
 
 
-class AggregateRoot(Entity):
-    """Base class for aggregate roots"""
+# Unit of Work Interface
+class UnitOfWorkInterface:
+    """Unit of work interface for DDD"""
 
-    version: int = 0
-    created_at: datetime
-    updated_at: datetime
+    def __enter__(self):
+        """Enter unit of work"""
+        return self
 
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        """Exit unit of work"""
+        if exc_type is None:
+            self.commit()
+        else:
+            self.rollback()
 
-class SharedInterfaces:
-    """Shared interfaces for cross-context communication"""
+    def commit(self):
+        """Commit unit of work"""
+        raise NotImplementedError
 
-    pass
+    def rollback(self):
+        """Rollback unit of work"""
+        raise NotImplementedError
