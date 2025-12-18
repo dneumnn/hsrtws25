@@ -77,11 +77,11 @@ As a customer, I want to see accurate inventory information and delivery estimat
 
 ### Edge Cases
 
-- What happens when a customer tries to add more items to their basket than are available in inventory?
-- How does the system handle concurrent purchases that might deplete inventory during checkout?
-- What happens when a product's delivery estimate changes after it's been added to the basket but before checkout?
-- How does the system handle products that are discontinued or no longer available?
-- What happens when a customer abandons their shopping basket?
+- When a customer tries to add more items to their basket than are available in inventory: display clear error message and show maximum available quantity
+- How does the system handle concurrent purchases that might deplete inventory during checkout: implement optimistic locking with queue-based processing and real-time inventory validation
+- What happens when a product's delivery estimate changes after it's been added to the basket but before checkout: display updated delivery estimate and require customer confirmation before proceeding
+- How does the system handle products that are discontinued or no longer available: mark as unavailable, hide from search results, and provide similar product recommendations
+- What happens when a customer abandons their shopping basket: implement 30-minute session timeout with email notification for registered users
 
 ## Requirements *(mandatory)*
 
@@ -130,10 +130,9 @@ As a customer, I want to see accurate inventory information and delivery estimat
 ## Assumptions
 
 - User authentication will be required for all purchases (no guest checkout)
-- Full shipping carrier integration will be implemented for real-time order tracking
-- The web shop will initially support major credit cards and PayPal as payment methods
-- Shipping will be available within the domestic market initially, with international shipping as a future enhancement
-- Product catalog will include standard furniture categories (chairs, tables, sofas, storage, lighting, etc.)
+- Full shipping carrier integration will be implemented for real-time order tracking (FedEx, UPS, DHL, USPS)
+- The web shop will initially support Visa, Mastercard, American Express, Discover credit cards, and PayPal as payment methods
+- Shipping will be available within the United States domestic market initially, with international shipping as a future enhancement
+- Product catalog will include furniture categories: chairs, tables, sofas, storage units, lighting fixtures, beds, outdoor furniture, office furniture, and decor accessories
 - Inventory management will handle both warehouse stock and in-transit products from manufacturers
-- The system will use standard e-commerce security practices for payment processing and customer data protection
-- Basic order tracking will be implemented without full shipping carrier integration in the initial version
+- The system will implement PCI DSS compliance for payment processing, HTTPS encryption with TLS 1.3, regular security audits, input validation, CSRF protection, and GDPR-compliant data handling

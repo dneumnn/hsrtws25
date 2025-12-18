@@ -240,7 +240,12 @@ src/
 - [ ] T117 [DDD] Implement domain event store and replay capability
 - [ ] T118 [DDD] Add CQRS patterns for complex queries
 - [ ] T119 [DDD] Implement saga pattern for distributed transactions
-- [ ] T120 [DDD] Run final validation and testing
+- [ ] T121 [DDD] Implement performance testing for 500 concurrent users in tests/performance/
+- [ ] T122 [DDD] Create load testing scripts for peak shopping periods
+- [ ] T123 [DDD] Implement inventory accuracy testing framework in tests/integration/
+- [ ] T124 [DDD] Create automated inventory reconciliation processes
+- [ ] T125 [DDD] Implement delivery estimate accuracy testing in tests/integration/
+- [ ] T126 [DDD] Create delivery tracking validation processes
 
 ---
 
@@ -344,13 +349,14 @@ With multiple developers:
 
 ## Summary
 
-### Total Task Count: 120
+### Total Task Count: 126
 
 ### Task Count per User Story
 - **User Story 1 (P1)**: 21 tasks (Catalog Service)
 - **User Story 2 (P2)**: 18 tasks (Basket Service)
 - **User Story 3 (P3)**: 24 tasks (Order Service)
 - **User Story 4 (P4)**: 12 tasks (Inventory Service)
+- **Performance & Accuracy**: 6 tasks (Cross-cutting)
 
 ### Parallel Opportunities Identified
 - **Setup Phase**: 5 parallelizable tasks
@@ -371,7 +377,7 @@ With multiple developers:
 
 ### Format Validation
 - ✅ All tasks follow the checklist format (checkbox, ID, labels, file paths)
-- ✅ Task IDs are sequential (T001-T120)
+- ✅ Task IDs are sequential (T001-T126)
 - ✅ [P] markers for parallelizable tasks
 - ✅ [Story] labels for user story phase tasks
 - ✅ [DDD] markers for Domain-Driven Design tasks
