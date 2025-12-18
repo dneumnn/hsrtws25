@@ -3,7 +3,6 @@
 ## Prerequisites
 
 - Python 3.12+
-- Node.js 18+ (for frontend development)
 - SQLite (included with Python)
 - Git
 
@@ -12,29 +11,31 @@
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-repo/furniture-webshop.git
-cd furniture-webshop
+git clone https://github.com/dneumnn/hsrtws25.git 
+cd hsrtws25
 ```
 
 ### 2. Set Up Backend
 
 ```bash
 # Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+# python -m venv venv
+# source venv/bin/activate  # On Windows: venv\Scripts\activate
+conda create --name hsrtws25 python=3.12
+conda activate hsrtws25
 
 # Install dependencies
 pip install -r requirements.txt
 
 # Set up environment variables
-cp .env.example .env
+# cp .env.example .env
 # Edit .env file with your configuration
 
 # Run database migrations
-python -m alembic upgrade head
+# python -m alembic upgrade head
 
 # Start FastAPI server
-uvicorn app.main:app --reload
+uvicorn app.main:app --reload --app-dir src
 ```
 
 The backend will be available at `http://localhost:8000`
@@ -42,17 +43,17 @@ API documentation: `http://localhost:8000/docs`
 
 ### 3. Set Up Frontend
 
-```bash
-cd frontend
+#```bash
+#cd frontend
 
 # Install dependencies (if using any build tools)
-npm install
+#npm install
 
 # Start development server
-npm run dev
-```
+#npm run dev
+#```
 
-The frontend will be available at `http://localhost:3000`
+#The frontend will be available at `http://localhost:3000`
 
 ### 4. Run Tests
 
@@ -61,18 +62,18 @@ The frontend will be available at `http://localhost:3000`
 python -m pytest tests/
 
 # Frontend tests (if applicable)
-cd frontend
-npm test
+#cd frontend
+#npm test
 ```
 
 ## Development Workflow
 
 ### Backend Development
 
-- **Models**: Define in `backend/src/models/` using SQLAlchemy
-- **Services**: Implement business logic in `backend/src/services/`
-- **API Endpoints**: Create in `backend/src/api/` following REST conventions
-- **Repositories**: Data access layer in `backend/src/repositories/`
+- **Models**: Define in `src/[service]/domain/` using SQLAlchemy
+- **Services**: Implement business logic in `src/[service]/application`
+- **API Endpoints**: Create in `src/[service]/infrastructure` following REST conventions
+- **Repositories**: Data access layer in `src/[service]/domain/`
 
 ### Frontend Development
 
@@ -96,6 +97,7 @@ python -m alembic downgrade -1
 
 ## Key Features Implementation
 
+TODO
 ### Product Catalog
 
 - **Backend**: `GET /api/v1/products` endpoint
