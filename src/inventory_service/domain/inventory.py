@@ -14,9 +14,10 @@ class Inventory:
     in_transit_quantity: int = 0
     expected_arrival_date: Optional[date] = None
     location: str = "main_warehouse"
-
-    id: UUID = field(default_factory=uuid4)
     last_updated: datetime = field(default_factory=datetime.utcnow)
+    
+    id: UUID = field(default_factory=uuid4)
+    
 
     def __post_init__(self) -> None:
         if self.warehouse_quantity < 0:

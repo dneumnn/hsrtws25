@@ -1,3 +1,4 @@
+# TODO
 """Product domain events for inventory changes."""
 from datetime import datetime
 from typing import Dict, Any
@@ -5,6 +6,7 @@ from uuid import UUID
 from pydantic import BaseModel
 
 
+#TODO - should be part of inventory ?
 class ProductInventoryChangedEvent(BaseModel):
     """Event triggered when product inventory changes."""
     event_type: str = "product_inventory_changed"

@@ -33,7 +33,7 @@ app.add_middleware(
 
 # Import and register bounded context routers
 
-"""
+
 try:
     from catalog_service.presentation.api.products import router as products_router
 
@@ -41,7 +41,7 @@ try:
     print("Catalog service router registered")
 except ImportError as e:
     print(f"Could not import catalog service router: {e}")
-"""
+
 try:
     from inventory_service.presentation.api.inventory_router import router as inventory_router
 

@@ -1,85 +1,73 @@
 """Product repository implementation."""
+
 from typing import List, Optional
-from uuid import UUID
 from sqlalchemy.orm import Session
 from sqlalchemy import or_
-from src.catalog_service.domain.product import Product
+
+from dataclasses import asdict
+
+from shared_kernel.infrastructure.repository import BaseRepository
+from catalog_service.domain.product import Product
+from catalog_service.infrastructure.product_orm import ProductORM
 
 
-class ProductRepository:
+class ProductRepository(BaseRepository[ProductORM]):
     """Repository for Product entities."""
 
+    def from_orm(self, product: ProductORM) -> Product:
+        return Product(
+            name=product.name,
+            description=product.description,
+            price=product.price,
+            style=product.style,
+            image=product.image,
+            category=product.category,
+            created_at=product.created_at,
+            updated_at=product.updated_at,
+            is_active=product.is_active,
+            id=product.id
+        )
+
+    def from_orm_as_list(self, products: List[ProductORM]) -> List[Product]:
+        return [self.from_orm(p) for p in products]
+
+    def to_orm(product: Product) -> ProductORM:
+        return ProductORM(**asdict(product))
+
     def __init__(self, db: Session):
-        self.db = db
-        self.model = Product
+        super().__init__(ProductORM, db)
 
-    def get(self, db: Session, id: UUID) -> Optional[Product]:
-        """Get entity by ID"""
-        return db.query(self.model).filter(self.model.id == str(id)).first()
-
-    def get_all(self, db: Session) -> List[Product]:
-        """Get all entities"""
-        return db.query(self.model).all()
-
-    def create(self, db: Session, entity_data: dict) -> Product:
-        """Create new entity"""
-        entity = self.model(**entity_data)
-        db.add(entity)
-        db.commit()
-        db.refresh(entity)
-        return entity
-
-    def update(self, db: Session, id: UUID, update_data: dict) -> Optional[Product]:
-        """Update existing entity"""
-        entity = self.get(db, id)
-        if entity:
-            for key, value in update_data.items():
-                setattr(entity, key, value)
-            db.commit()
-            db.refresh(entity)
-        return entity
-
-    def delete(self, db: Session, id: UUID) -> bool:
-        """Delete entity"""
-        entity = self.get(db, id)
-        if entity:
-            db.delete(entity)
-            db.commit()
-            return True
-        return False
-
-    def get_by_name(self, db: Session, name: str) -> Optional[Product]:
+    def get_by_name(self, name: str) -> Optional[Product]:
         """Get product by name."""
-        return db.query(Product).filter(Product.name == name).first()
+        return self.db.query(ProductORM).filter(ProductORM.name == name).first()
 
     def get_by_category(
-        self, db: Session, category: str, limit: int = 100
+        self, category: str, limit: int = 100
     ) -> List[Product]:
         """Get products by category."""
-        return (
-            db.query(Product)
-            .filter(Product.category == category)
-            .filter(Product.is_active)
-            .limit(limit)
-            .all()
-        )
+        products = self.db.query(ProductORM).\
+            filter(ProductORM.category == category).\
+            filter(ProductORM.is_active).limit(limit).all()
+        return self.from_orm_as_list(products)
 
-    def search(self, db: Session, search_term: str, limit: int = 100) -> List[Product]:
+    def search(self, search_term: str, limit: int = 100) -> List[Product]:
         """Search products by name or description."""
         search_pattern = f"%{search_term}%"
-        return (
-            db.query(Product)
+        products = (
+            self.db.query(ProductORM)
             .filter(
                 or_(
-                    Product.name.ilike(search_pattern),
-                    Product.description.ilike(search_pattern)
+                    ProductORM.name.ilike(search_pattern),
+                    ProductORM.description.ilike(search_pattern)
                 )
             )
-            .filter(Product.is_active)
+            .filter(ProductORM.is_active)
             .limit(limit)
             .all()
         )
+        return self.from_orm_as_list(products)
 
-    def get_active_products(self, db: Session, limit: int = 100) -> List[Product]:
+    def get_active_products(self, limit: int = 100) -> List[Product]:
         """Get all active products."""
-        return db.query(Product).filter(Product.is_active).limit(limit).all()
+        products = self.db.query(Product).filter(Product.is_active).limit(limit).all()
+        return self.from_orm_as_list(products)

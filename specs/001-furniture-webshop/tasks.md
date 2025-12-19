@@ -132,15 +132,15 @@ src/
 - [x] TEST025 [TDD] Implement unit test for Product domain model in tests/unit/catalog_service/test_product.py
 - [x] TEST026 [TDD] Implement unit test for Inventory domain model in tests/unit/inventory_service/test_inventory.py
 - [x] TEST027 [TDD] Implement unit test for DeliveryEstimate domain model in tests/unit/inventory_service/test_delivery_estimate.py
-- [ ] TEST028 [TDD] Implement unit test for Product repository in tests/unit/catalog_service/test_product_repository.py (PARTIAL - some tests failing due to SQLAlchemy/Pydantic compatibility issues)
-- [ ] TEST029 [TDD] Implement unit test for Inventory repository in tests/unit/inventory_service/test_inventory_repository.py (BLOCKED - BaseRepository type annotation issues)
-- [x] TEST030 [TDD] Implement unit test for Product application service in tests/unit/catalog_service/test_product_service.py
-- [ ] TEST031 [TDD] Implement unit test for Inventory application service in tests/unit/inventory_service/application/inventory_service.py (BLOCKED - BaseRepository type annotation issues)
+- [ ] TEST028 [TDD] Implement unit test for Product repository in tests/unit/catalog_service/test_product_repository.py
+- [x] TEST029 [TDD] Implement unit test for Inventory repository in tests/unit/inventory_service/test_inventory_repository.py 
+- [ ] TEST030 [TDD] Implement unit test for Product application service in tests/unit/catalog_service/test_product_service.py
+- [x] TEST031 [TDD] Implement unit test for Inventory application service in tests/unit/inventory_service/application/inventory_service.py
 - [ ] TEST032 [TDD] Implement unit test for DeliveryEstimate application service in tests/unit/inventory_service/test_delivery_estimate_service.py
 - [ ] TEST033 [TDD] Implement unit test for GET /products endpoint in tests/unit/catalog_service/test_
-products_api.py (BLOCKED - missing httpx dependency)
+products_api.py 
 - [ ] TEST034 [TDD] Implement unit test for GET /products/{product_id} endpoint in tests/unit/catalog_service/test_products_product_api.py
-- [ ] TEST035 [TDD] Implement unit btest for GET /inventory/{product_id} endpoint in tests/units/inventory_service/test_inventory_api.py (BLOCKED - missing httpx dependency)
+- [x] TEST035 [TDD] Implement unit test for GET /inventory/{product_id} endpoint in tests/units/inventory_service/test_inventory_api.py
 
 **Checkpoint**: At this point, User Story 1 should be fully testable independently
 

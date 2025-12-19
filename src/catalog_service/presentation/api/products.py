@@ -5,11 +5,10 @@ from typing import List, Optional
 from uuid import UUID
 from sqlalchemy.orm import Session
 
-from src.catalog_service.application.product_service import ProductService
-from src.catalog_service.infrastructure.product_repository import ProductRepository
-from src.catalog_service.domain.product import Product
-from src.shared_kernel.infrastructure.database import get_db
-
+from catalog_service.application.product_service import ProductService
+from catalog_service.infrastructure.product_repository import ProductRepository
+from catalog_service.domain.product import Product
+from shared_kernel.infrastructure.database import get_db
 
 router = APIRouter(
     prefix="/products",
@@ -17,12 +16,10 @@ router = APIRouter(
     responses={404: {"description": "Not found"}},
 )
 
-
 def get_product_service(db: Session = Depends(get_db)) -> ProductService:
     """Get product service dependency."""
     repository = ProductRepository(db)
     return ProductService(repository)
-
 
 @router.get("/", response_model=List[Product])
 def get_products(
@@ -41,7 +38,6 @@ def get_products(
     else:
         return service.get_all_products(limit)
 
-
 @router.get("/{product_id}", response_model=Product)
 def get_product(
     product_id: UUID, service: ProductService = Depends(get_product_service)
@@ -51,7 +47,6 @@ def get_product(
     if not product:
         raise HTTPException(status_code=404, detail="Product not found")
     return product
-
 
 @router.post("/", response_model=Product, status_code=201)
 def create_product(
@@ -66,7 +61,7 @@ def create_product(
             "price",
             "category",
             "style",
-            "images",
+            "image",
         ]
         for field in required_fields:
             if field not in product_data:
@@ -79,9 +74,9 @@ def create_product(
             raise HTTPException(status_code=400, detail="Price must be positive")
 
         # Validate images
-        if not product_data["images"] or len(product_data["images"]) == 0:
+        if not product_data["image"]:
             raise HTTPException(
-                status_code=400, detail="At least one image is required"
+                status_code=400, detail="An image is required"
             )
 
         return service.create_product(product_data)
