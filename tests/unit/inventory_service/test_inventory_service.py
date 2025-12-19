@@ -2,11 +2,8 @@
 
 from unittest.mock import Mock
 from uuid import uuid4
-from src.inventory_service.application.inventory_service import InventoryService
-from src.inventory_service.infrastructure.inventory_repository import (
-    InventoryRepository,
-)
-
+from inventory_service.application.inventory_service import InventoryService
+from inventory_service.infrastructure.inventory_repository import InventoryRepository
 
 def test_inventory_service_get_inventory():
     """Test getting inventory by product ID."""

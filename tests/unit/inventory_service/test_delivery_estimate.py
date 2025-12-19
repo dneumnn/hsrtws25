@@ -2,7 +2,7 @@
 
 from datetime import datetime
 from uuid import uuid4
-from src.inventory_service.domain.delivery_estimate import DeliveryEstimate
+from inventory_service.domain.delivery_estimate import DeliveryEstimate
 
 
 def test_delivery_estimate_creation():

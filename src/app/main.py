@@ -2,9 +2,6 @@ from fastapi import FastAPI, APIRouter
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Dict, Any
 
-# Import shared kernel infrastructure
-from shared_kernel.infrastructure.database import init_db
-
 # Domain event bus for cross-context communication
 domain_event_bus = []
 
@@ -19,7 +16,7 @@ def register_router(context_name: str, router: APIRouter):
 # Create main FastAPI application
 app = FastAPI(
     title="Designer Furniture Web Shop API",
-    description="DDD-based e-commerce platform for designer furniture",
+    description="e-commerce platform for designer furniture",
     version="1.0.0",
     docs_url="/docs",
     redoc_url="/redoc",
@@ -35,21 +32,23 @@ app.add_middleware(
 )
 
 # Import and register bounded context routers
+
+"""
 try:
     from catalog_service.presentation.api.products import router as products_router
 
     register_router("catalog", products_router)
-    print("✅ Catalog service router registered")
+    print("Catalog service router registered")
 except ImportError as e:
-    print(f"⚠️  Could not import catalog service router: {e}")
-
+    print(f"Could not import catalog service router: {e}")
+"""
 try:
-    from inventory_service.presentation.api.inventory import router as inventory_router
+    from inventory_service.presentation.api.inventory_router import router as inventory_router
 
     register_router("inventory", inventory_router)
-    print("✅ Inventory service router registered")
+    print("Inventory service router registered")
 except ImportError as e:
-    print(f"⚠️  Could not import inventory service router: {e}")
+    print(f"Could not import inventory service router: {e}")
 
 
 def publish_domain_event(event_name: str, event_data: Dict[str, Any]):
@@ -65,8 +64,16 @@ def on_startup():
     """
     Initialize database and other startup tasks
     """
-    init_db()
-    print("✅ Database initialized and ready")
+    try:
+        from shared_kernel.infrastructure.database import Base, database_engine
+        # Initialize database tables
+        from inventory_service.infrastructure.inventory_orm import InventoryORM
+
+        Base.metadata.create_all(bind=database_engine)
+
+        print("Database initialized and ready")
+    except Exception as e:
+        print(f"Database initialization failed: {e}")
 
 
 # Health check endpoint

@@ -3,7 +3,7 @@
 from datetime import datetime
 from uuid import uuid4
 from pydantic import HttpUrl
-from src.catalog_service.domain.product import Product
+from catalog_service.domain.product import Product
 
 
 def test_product_creation():

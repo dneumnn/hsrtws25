@@ -4,8 +4,8 @@ from unittest.mock import Mock, patch
 from fastapi.testclient import TestClient
 from uuid import uuid4
 from pydantic import HttpUrl
-from src.catalog_service.presentation.api.products import router, get_product_service
-from src.catalog_service.application.product_service import ProductService
+from catalog_service.presentation.api.products import router, get_product_service
+from catalog_service.application.product_service import ProductService
 
 
 def test_get_products():

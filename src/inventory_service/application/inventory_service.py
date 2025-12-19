@@ -1,8 +1,8 @@
 """Inventory application service."""
 from typing import List, Optional
 from uuid import UUID
-from src.inventory_service.domain.inventory import Inventory
-from src.inventory_service.infrastructure.inventory_repository import InventoryRepository
+from inventory_service.domain.inventory import Inventory
+from inventory_service.infrastructure.inventory_repository import InventoryRepository
 
 
 class InventoryService:

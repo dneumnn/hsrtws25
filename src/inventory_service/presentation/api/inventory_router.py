@@ -4,11 +4,11 @@ from typing import List
 from uuid import UUID
 from sqlalchemy.orm import Session
 
-from src.inventory_service.application.inventory_service import InventoryService
-from src.inventory_service.application.delivery_estimate_service import DeliveryEstimateService
-from src.inventory_service.infrastructure.inventory_repository import InventoryRepository
-from src.inventory_service.domain.inventory import Inventory
-from src.shared_kernel.infrastructure.database import get_db
+from inventory_service.application.inventory_service import InventoryService
+from inventory_service.application.delivery_estimate_service import DeliveryEstimateService
+from inventory_service.infrastructure.inventory_repository import InventoryRepository
+from inventory_service.domain.inventory import Inventory
+from shared_kernel.infrastructure.database import get_db
 
 
 router = APIRouter(
@@ -37,6 +37,7 @@ def get_inventory(
 ) -> Inventory:
     """Get inventory status for a product."""
     inventory = service.get_inventory(product_id)
+    
     if not inventory:
         raise HTTPException(status_code=404, detail="Inventory not found for product")
     return inventory

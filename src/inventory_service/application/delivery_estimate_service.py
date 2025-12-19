@@ -2,8 +2,8 @@
 from typing import Optional
 from uuid import UUID
 from datetime import datetime
-from src.inventory_service.domain.delivery_estimate import DeliveryEstimate
-from src.inventory_service.infrastructure.inventory_repository import InventoryRepository
+from inventory_service.domain.delivery_estimate import DeliveryEstimate
+from inventory_service.infrastructure.inventory_repository import InventoryRepository
 
 
 class DeliveryEstimateService:

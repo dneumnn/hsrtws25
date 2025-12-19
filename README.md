@@ -49,7 +49,7 @@ src/
 
 ```bash
 # Start FastAPI server
-uvicorn app.main:app --reload
+uvicorn app.main:app --reload --app-dir src
 ```
 
 The application will be available at `http://localhost:8000`
@@ -125,23 +125,74 @@ Domain objects represent **behavior**, not just structure.
 - Anemic domain models are considered a design failure.
 - Business decisions belong in the domain, not orchestration layers.
 
-## Implementation Status
+## Test
 
-### Phase 1: Setup (Shared Infrastructure)
+Add pytest.ini
 
-- [x] T001 Create DDD project structure with bounded contexts and shared kernel
-- [ ] T002 Initialize Python 3.12+ project with FastAPI, SQLAlchemy, SQLite dependencies
-- [ ] T003 [P] Configure linting and formatting tools (ruff, black)
-- [ ] T004 [P] Setup pytest for testing
-- [ ] T005 Create basic project documentation structure
-- [ ] T006 Initialize git repository with proper .gitignore
-- [ ] T007 Setup virtual environment and dependency management
-- [ ] T008 [DDD] Create shared kernel structure in src/shared_kernel/
-- [ ] T009 [DDD] Define domain events and shared interfaces
+```text
+[pytest]
+pythonpath = src
+```
 
-### Next Steps
+The starlette.testclient module requires the httpx package to be installed.
 
-1. Initialize Python project with dependencies
-2. Configure development tools
-3. Set up testing framework
-4. Create shared kernel structure
+## OR Mapping and Domain Model
+
+Use dataclasses.dataclass for domain models, SQLAlchemy for persistence, and Pydantic for validation/serialization at the edges.
+
+This keeps business rules inside the domain model, not in a validation framework.
+
+API (Pydantic)
+   ↓
+Application Services
+   ↓
+Domain Models (dataclasses)
+   ↓
+Repositories
+   ↓
+SQLAlchemy ORM
+
+
+Unused code:
+
+# Unit of work interface
+class UnitOfWork:
+    """Unit of work interface"""
+
+    def __init__(self, db: Session):
+        self.db = db
+        self.committed = False
+        self.rolled_back = False
+
+    def __enter__(self):
+        """Enter unit of work"""
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        """Exit unit of work"""
+        if exc_type is None:
+            self.commit()
+        else:
+            self.rollback()
+
+    def commit(self):
+        """Commit unit of work"""
+        if not self.committed and not self.rolled_back:
+            self.db.commit()
+            self.committed = True
+
+    def rollback(self):
+        """Rollback unit of work"""
+        if not self.rolled_back and not self.committed:
+            self.db.rollback()
+            self.rolled_back = True
+
+
+# Generic repository factory
+class RepositoryFactory:
+    """Factory for creating repositories"""
+
+    @staticmethod
+    def create_repository(model: Type) -> BaseRepository:
+        """Create repository for given model"""
+        return BaseRepository(model)

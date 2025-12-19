@@ -2,7 +2,8 @@
 
 from datetime import date, datetime
 from uuid import uuid4
-from src.inventory_service.domain.inventory import Inventory
+
+from inventory_service.domain.inventory import Inventory
 
 
 def test_inventory_creation():

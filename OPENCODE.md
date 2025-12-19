@@ -49,6 +49,7 @@ opencode
 ```
 
 Manuel corrections of constitution.md
+
 ```text
 
 1. Domain First
@@ -167,6 +168,7 @@ Please refactor the tasks along this.
 ```command
 /speckit.implement Phase 1
 ```
+
 ### Python
 
 ```bash

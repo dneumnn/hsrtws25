@@ -3,8 +3,8 @@
 from unittest.mock import Mock, patch
 from uuid import uuid4
 from pydantic import HttpUrl
-from src.catalog_service.domain.product import Product
-from src.catalog_service.infrastructure.product_repository import ProductRepository
+from catalog_service.domain.product import Product
+from catalog_service.infrastructure.product_repository import ProductRepository
 
 
 def test_product_repository_get():

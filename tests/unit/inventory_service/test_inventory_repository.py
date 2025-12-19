@@ -2,11 +2,8 @@
 
 from unittest.mock import Mock
 from uuid import uuid4
-from src.inventory_service.domain.inventory import Inventory
-from src.inventory_service.infrastructure.inventory_repository import (
-    InventoryRepository,
-)
-
+from inventory_service.infrastructure.inventory_orm import InventoryORM
+from inventory_service.infrastructure.inventory_repository import InventoryRepository
 
 def test_inventory_repository_get_by_product_id():
     """Test getting inventory by product ID."""
@@ -14,7 +11,7 @@ def test_inventory_repository_get_by_product_id():
     repo = InventoryRepository(mock_db)
 
     # Mock the database query
-    mock_inventory = Inventory(
+    mock_inventory = InventoryORM(
         id=uuid4(),
         product_id=uuid4(),
         warehouse_quantity=10,
@@ -36,14 +33,14 @@ def test_inventory_repository_get_in_stock_products():
 
     # Mock the database query
     mock_inventories = [
-        Inventory(
+        InventoryORM(
             id=uuid4(),
             product_id=uuid4(),
             warehouse_quantity=10,
             in_transit_quantity=5,
             location="main_warehouse",
         ),
-        Inventory(
+        InventoryORM(
             id=uuid4(),
             product_id=uuid4(),
             warehouse_quantity=5,
@@ -66,7 +63,7 @@ def test_inventory_repository_update_quantity():
     repo = InventoryRepository(mock_db)
 
     # Mock the database operations
-    mock_inventory = Inventory(
+    mock_inventory = InventoryORM(
         id=uuid4(),
         product_id=uuid4(),
         warehouse_quantity=10,
