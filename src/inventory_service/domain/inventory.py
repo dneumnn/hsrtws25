@@ -5,7 +5,6 @@ from typing import Optional
 from uuid import UUID, uuid4
 from pydantic import BaseModel, Field
 
-
 class Inventory(BaseModel):
     """Represents inventory status for a product."""
 
